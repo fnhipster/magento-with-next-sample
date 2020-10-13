@@ -1,0 +1,19 @@
+query App {
+  storeConfig {
+    id
+    default_title
+    base_media_url
+    logo_alt
+    header_logo_src
+    copyright
+  }
+
+  categoryList {
+    id
+    children {
+      id
+      url_key
+      name
+    }
+  }
+}

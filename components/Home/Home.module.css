@@ -1,0 +1,23 @@
+.home {
+  display: grid;
+  grid-auto-rows: max-content;
+  grid-gap: 20px;
+}
+
+.search {
+  font-size: 32px;
+  line-height: 0;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 0 none;
+  border-bottom: 1px solid #ccc;
+}
+
+.searchInput::placeholder {
+  font-style: italic;
+  color: #bbb;
+}

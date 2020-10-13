@@ -1,0 +1,26 @@
+#import "~/components/Price/_price_range.graphql"
+
+query ProductQuery($urlKey: String!) {
+  products(filter: { url_key: { eq: $urlKey } }) {
+    items {
+      id
+      sku
+      name
+
+      description {
+        html
+      }
+
+      media_gallery {
+        id: url
+        label
+        url
+        type: __typename
+      }
+
+      price_range {
+        ...price_range
+      }
+    }
+  }
+}

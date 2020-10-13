@@ -1,0 +1,17 @@
+query CategoryQuery($filters: CategoryFilterInput!) {
+  categoryList(filters: $filters) {
+    id
+    name
+
+    children {
+      id
+      url_key
+      name
+    }
+
+    breadcrumbs {
+      id: category_id
+      category_url_key
+    }
+  }
+}

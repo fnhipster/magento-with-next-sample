@@ -1,0 +1,41 @@
+.category {
+  display: grid;
+  grid-auto-rows: max-content;
+  grid-gap: 20px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 16px;
+  padding: 0 10px;
+  align-items: center;
+  font-size: 22px;
+}
+
+.header > h2 {
+  font-size: 1.2em;
+}
+
+.backLink {
+  padding: 0;
+  border: 0 none;
+  border-radius: 50%;
+  width: 1.6em;
+  height: 1.6em;
+  background: #222;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1em;
+  opacity: 0.15;
+  position: relative;
+  top: 2px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backLink:hover {
+  opacity: 1;
+}

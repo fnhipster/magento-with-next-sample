@@ -1,0 +1,26 @@
+{
+  "name": "magento-nextjs-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Carlos A. Cabrera @fnhipster",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.2.3",
+    "graphql": "^15.3.0",
+    "http-proxy-middleware": "^1.0.5",
+    "next": "^9.5.5",
+    "nextjs-progressbar": "^0.0.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "reset-css": "^5.0.1",
+    "use-debounce": "^5.0.1"
+  },
+  "devDependencies": {
+    "graphql-tag": "^2.11.0"
+  }
+}

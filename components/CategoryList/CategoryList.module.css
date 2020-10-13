@@ -1,0 +1,36 @@
+.categoriesListWrapper {
+  overflow-x: auto;
+  max-width: 100%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.categoriesListWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.categoriesList {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-gap: 10px;
+  padding: 0 10px;
+}
+
+.categoriesList li {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  color: #333;
+  display: flex;
+}
+
+.categoriesList li:hover {
+  border-color: #333;
+  color: #222;
+}
+
+.categoriesList li a {
+  color: inherit;
+  text-decoration: none;
+  padding: 10px 18px;
+}
