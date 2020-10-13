@@ -70,7 +70,8 @@
 @media (min-width: 600px) {
   .product {
     grid-template-columns: 1fr 1fr;
-    grid-gap: 60px;
+    grid-gap: 20px;
+    align-items: center;
   }
 
   .gallery {
@@ -85,7 +86,7 @@
     position: sticky;
     top: 20px;
     height: 90vh;
-    align-items: center;
+    justify-content: center;
     display: flex;
   }
 }

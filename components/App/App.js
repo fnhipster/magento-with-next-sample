@@ -57,7 +57,7 @@ export const App = ({ children }) => {
           </nav>
         </header>
 
-        {children}
+        <div className={styles.content}>{children}</div>
 
         {store?.copyright && (
           <footer className={styles.footer}>

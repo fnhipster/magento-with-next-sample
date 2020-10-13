@@ -46,6 +46,10 @@
   text-decoration: underline;
 }
 
+.content {
+  padding: 0 10px;
+}
+
 .footer {
   border-top: 1px solid #eee;
   padding: 40px 20px;
