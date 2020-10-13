@@ -1,4 +1,5 @@
 const path = require('path')
+const { URL } = require('url')
 
 module.exports = {
   webpack: (config) => {
@@ -17,7 +18,14 @@ module.exports = {
   async rewrites() {
     return [
       /**
-       * Magento Proxy API
+       * Rewrite /graphql requests to Magento
+       */
+      {
+        source: '/graphql/:pathname*',
+        destination: new URL('graphql', process.env.MAGENTO_URL).href,
+      },
+      /**
+       * Sample of how to use APIs to Proxy Images
        */
       {
         source: '/store/:pathname*',
