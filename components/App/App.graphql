@@ -1,6 +1,7 @@
 query App {
   storeConfig {
     id
+    category_url_suffix # One of those things. 🤷‍♂️
     default_title
     base_media_url
     logo_alt

@@ -17,6 +17,8 @@ export const Products = ({ search, filters }) => {
 
   const products = data?.products.items || []
 
+  const productUrlSuffix = data?.storeConfig.product_url_suffix ?? ''
+
   const handleFetchMore = useCallback(() => {
     if (loading || !page || page.current_page === page.total_pages) return
 
@@ -46,8 +48,18 @@ export const Products = ({ search, filters }) => {
   return (
     <section className={styles.products}>
       <div className={styles.productsList}>
-        {products.map((product, index) => (
-          <Link key={product.id} href={`/product/${product.url_key}`}>
+        {products.map((product) => (
+          <Link
+            key={product.id}
+            href={{
+              pathname: '_url-resolver',
+              query: {
+                pathname: `/${product.url_key + productUrlSuffix}`,
+                type: 'PRODUCT',
+              },
+            }}
+            as={`/${product.url_key + productUrlSuffix}`}
+          >
             <a>
               <article className={styles.productItem}>
                 <picture className={styles.productWrapper}>

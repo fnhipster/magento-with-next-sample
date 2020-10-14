@@ -1,7 +1,7 @@
 #import "~/components/Price/_price_range.graphql"
 
-query ProductQuery($urlKey: String!) {
-  products(filter: { url_key: { eq: $urlKey } }) {
+query ProductQuery($filters: ProductAttributeFilterInput!) {
+  products(filter: $filters) {
     items {
       id
       sku

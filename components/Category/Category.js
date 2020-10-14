@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './Category.module.css'
 import { useQuery } from '@apollo/client'
 import CATEGORY_QUERY from './Category.graphql'
-import CategoryList from '~/components/CategoryList'
 import Products from '~/components/Products'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -21,8 +20,11 @@ export const Category = ({ filters }) => {
 
   const category = data.categoryList[0]
 
+  const categoryUrlSuffix = data.storeConfig.category_url_suffix ?? ''
+
   const backUrl =
-    category.breadcrumbs && category.breadcrumbs[0]?.category_url_key
+    category.breadcrumbs &&
+    category.breadcrumbs[0]?.category_url_path + categoryUrlSuffix
 
   return (
     <React.Fragment>
@@ -41,11 +43,37 @@ export const Category = ({ filters }) => {
           <h2>{category.name}</h2>
         </header>
 
-        {category.children?.length > 0 && (
-          <CategoryList items={category.children} />
-        )}
+        {/* Show Products only if the Category is set for it */}
+        {/PRODUCTS/.test(category.display_mode) && (
+          <React.Fragment>
+            {category.children?.length > 0 && (
+              <nav className={styles.categoriesListWrapper}>
+                <ul className={styles.categoriesList}>
+                  {category.children.map((category) => (
+                    <li key={category.id}>
+                      <Link
+                        href={{
+                          pathname: '_url-resolver',
+                          query: {
+                            pathname: `/${
+                              category.url_key + categoryUrlSuffix
+                            }`,
+                            type: 'CATEGORY',
+                          },
+                        }}
+                        as={`/${category.url_path + categoryUrlSuffix}`}
+                      >
+                        <a>{category.name}</a>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
 
-        <Products filters={{ category_id: { eq: category.id } }} />
+            <Products filters={{ category_id: { eq: category.id } }} />
+          </React.Fragment>
+        )}
       </div>
     </React.Fragment>
   )

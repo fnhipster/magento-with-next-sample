@@ -12,6 +12,8 @@ export const App = ({ children }) => {
 
   const store = data?.storeConfig
 
+  const categoryUrlSuffix = store?.category_url_suffix ?? ''
+
   const categories = data?.categoryList[0].children
 
   return (
@@ -48,7 +50,16 @@ export const App = ({ children }) => {
             <ul className={styles.categories}>
               {categories?.map((category) => (
                 <li key={category.id}>
-                  <Link href={`/category/${category.url_key}`}>
+                  <Link
+                    href={{
+                      pathname: '_url-resolver',
+                      query: {
+                        pathname: `/${category.url_key + categoryUrlSuffix}`,
+                        type: 'CATEGORY',
+                      },
+                    }}
+                    as={category.url_key + categoryUrlSuffix}
+                  >
                     <a>{category.name}</a>
                   </Link>
                 </li>

@@ -7,8 +7,8 @@ import Price from '~/components/Price'
 import Button from '~/components/Button'
 import Head from 'next/head'
 
-export const Product = ({ urlKey }) => {
-  const { loading, data } = useQuery(PRODUCT_QUERY, { variables: { urlKey } })
+export const Product = ({ filters }) => {
+  const { loading, data } = useQuery(PRODUCT_QUERY, { variables: { filters } })
 
   const product = data?.products.items[0]
 
@@ -37,25 +37,26 @@ export const Product = ({ urlKey }) => {
               />
             ))}
         </div>
+        <div className={styles.content}>
+          <div className={styles.detailsWrapper}>
+            <div className={styles.details}>
+              <h2>{product.name}</h2>
 
-        <div className={styles.detailsWrapper}>
-          <div className={styles.details}>
-            <h2>{product.name}</h2>
+              <div className={styles.sku}>SKU. {product.sku}</div>
 
-            <div className={styles.sku}>SKU. {product.sku}</div>
+              <Price {...product.price_range} />
 
-            <Price {...product.price_range} />
+              <div className={styles.buttonWrapper}>
+                <Button disabled>Add to Cart</Button>
+              </div>
 
-            <div className={styles.buttonWrapper}>
-              <Button disabled>Add to Cart</Button>
+              {product.description?.html && (
+                <div
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: product.description.html }}
+                />
+              )}
             </div>
-
-            {product.description?.html && (
-              <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: product.description.html }}
-              />
-            )}
           </div>
         </div>
       </div>

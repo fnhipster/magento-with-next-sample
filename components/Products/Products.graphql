@@ -6,6 +6,11 @@ query ProductsQuery(
   $pageSize: Int = 12
   $currentPage: Int = 1
 ) {
+  storeConfig {
+    id
+    product_url_suffix # One of those things. 🤷‍♂️
+  }
+
   products(
     search: $search
     filter: $filters
