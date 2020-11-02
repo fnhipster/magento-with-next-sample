@@ -1,6 +1,8 @@
 # How-to Magento with Next.js
 ## vol.1 Getting Started
 
+__📣 Note: This sample was developed before Next.js 10 and Next.js Commerce. (Update in progress)__
+
 Next.js is a minimalistic JAMstack framework; most of it is invisible to you (the developer). However, it is extensible when you need to customize and bring other third-party libraries.
 
 ### What you get out of the box with Next.js
